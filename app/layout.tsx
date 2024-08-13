@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
-import { ThemeProvider } from '~/components/theme-provider'
+import { ThemeProvider } from '@components/theme-provider'
 import { ny } from '~/lib/utils'
 import '~/styles/globals.css'
+
+import { UserProvider } from '@/components/user/hooks/useUser'
+
+import Header from '~/components/header'
+/* import { supabase } from '@/lib/initSupabase'
+import { SessionContextProvider } from '@supabase/auth-helpers-react' */
+
 
 const fontSans = FontSans({
    subsets: ['latin'],
@@ -31,7 +38,10 @@ export default function RootLayout({
                defaultTheme="dark"
                disableTransitionOnChange
             >
-               {children}
+               <UserProvider>
+                  <Header />
+                  {children}
+               </UserProvider>
             </ThemeProvider>
          </body>
       </html>
