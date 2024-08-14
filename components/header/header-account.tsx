@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/utils/supabase/client'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import useUser from '@/components/user/hooks/useUser'
 import LoginDialog from "~/components/user/user-login-dialog"
 import RegisterDialog from "~/components/user/user-register-dialog"
@@ -14,6 +14,7 @@ const supabase = createClient();
 export default function HeaderAccount() {
 
     const [user, setUser] = useUser();
+    const router = useRouter();
 
     // TODO refactor! unessary fetch
     useEffect(() => {
@@ -28,7 +29,7 @@ export default function HeaderAccount() {
     function handleLogout() {
         supabase.auth.signOut();
         setUser(null);
-        redirect('/')
+        router.push('/');
     }
 
     return <>
