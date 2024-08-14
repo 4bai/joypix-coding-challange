@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button'
 import UserRegisterForm from "@/components/user/user-register-form"
 
 type linktype = {
-    linkvariant: "button" | "text"
+    linkvariant?: "button" | "text"
 };
 
 export default function UserRegisterDialog({ linkvariant = "button" }: linktype) {
