@@ -9,7 +9,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"],
       "@components/*": ["./components/*"],
-      "@lib/*": ["./lib/*"],
+      "@lib/*": ["./lib/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,

@@ -1,10 +1,11 @@
-import React from "react"
-import Link from "next/link"
-import PageLayout from "~/components/layout/page-layout"
-import DiscussionDetail from "~/components/discussions/discussion-detail"
-export default function Page({ params }) {
-    return <>
+import React from 'react'
+import DiscussionDetail from '~/components/discussions/discussion-detail'
 
-        <DiscussionDetail discussionId={params.slug} />
+export default function Page({ params }: { params: { slug: string } }) {
+  return (
+    <>
+
+      <DiscussionDetail discussionId={params.slug} />
     </>
+  )
 }

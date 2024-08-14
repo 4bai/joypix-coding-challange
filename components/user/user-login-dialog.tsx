@@ -1,42 +1,43 @@
-import React from "react";
+import React from 'react'
 
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "~/components/ui/dialog"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '~/components/ui/dialog'
 import { Button } from '@/components/ui/button'
-import UserLoginForm from "@/components/user/user-login-form"
+import UserLoginForm from '@/components/user/user-login-form'
 
-type linktype = {
-    linkvariant?: "button" | "text"
-};
+interface linktype {
+  linkvariant?: 'button' | 'text'
+}
 
-export default function UserLoginDialog({ linkvariant = "button" }: linktype) {
-    return <Dialog>
-        {linkvariant === "button" &&
-            <DialogTrigger asChild>
-                <Button variant="outline">Login</Button>
-            </DialogTrigger>
-        }
+export default function UserLoginDialog({ linkvariant = 'button' }: linktype) {
+  return (
+    <Dialog>
+      {linkvariant === 'button' && (
+        <DialogTrigger asChild>
+          <Button variant="outline">Login</Button>
+        </DialogTrigger>
+      )}
 
-        {linkvariant === "text" &&
-            <DialogTrigger className="underline color-primary">Login</DialogTrigger>
-        }
+      {linkvariant === 'text'
+      && <DialogTrigger className="color-primary underline">Login</DialogTrigger>}
 
-        <DialogContent className="backdrop-blur-lg">
-            <DialogHeader className="my-5">
-                <DialogTitle>Login</DialogTitle>
-                <DialogDescription>
-                    Please login with your email and password
-                </DialogDescription>
-            </DialogHeader>
-            <div className="space-y-2">
-                <UserLoginForm />
-            </div>
-        </DialogContent>
+      <DialogContent className="backdrop-blur-lg">
+        <DialogHeader className="my-5">
+          <DialogTitle>Login</DialogTitle>
+          <DialogDescription>
+            Please login with your email and password
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-2">
+          <UserLoginForm />
+        </div>
+      </DialogContent>
     </Dialog>
+  )
 }
