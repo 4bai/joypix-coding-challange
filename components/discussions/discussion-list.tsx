@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useState, useReducer } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { createClient } from "~/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import useUser from '@/components/user/hooks/useUser'
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
@@ -16,7 +16,6 @@ export function DiscussionList() {
   const supabase = createClient();
   const [user] = useUser();
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
-  const [update, forceUpdate] = useReducer((x: number) => x + 1, 0);
   const [status, setStatus] = useState("loading");
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export function DiscussionList() {
     }
 
     fetchDiscussions();
-  }, [update])
+  }, [])
 
   if (status === "error") {
     return <div className="p-4 mx-auto max-w-7xl px-6 md:px-12 xl:px-6 text-center">
@@ -85,7 +84,7 @@ export function DiscussionList() {
   return (
     <div className="p-4 mx-auto max-w-7xl px-6 md:px-12 xl:px-6">
       {discussions.map((discussion: Discussion) => (
-        <SnippeItem key={discussion.id} discussion={discussion} onDelete={() => forceUpdate()} />
+        <SnippeItem key={discussion.id} discussion={discussion} />
       ))}
     </div>
   )

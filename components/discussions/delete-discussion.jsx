@@ -1,8 +1,9 @@
 import React from "react";
 import { useRouter } from 'next/navigation'
-import { createClient } from "~/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
+import { Button } from '@/components/ui/button'
 
-export default function DeleteDiscussion({ discussion, onDelete }) {
+export default function DeleteDiscussion({ discussion }) {
     const supabase = createClient();
     const router = useRouter();
     const handleDelete = async () => {
@@ -15,14 +16,13 @@ export default function DeleteDiscussion({ discussion, onDelete }) {
         } else {
             console.log('deleted');
             router.push('/');
-            onDelete();
         }
     }
 
     return <div>
-            <button onClick={handleDelete}>
+            <Button variant="destructive" onClick={handleDelete}>
                 Delete
-            </button>
+            </Button>
         </div>
     
 }   

@@ -13,7 +13,6 @@ import {
     AvatarImage,
 } from '~/components/ui/avatar'
 import { formatDate, formatTime } from "~/utils/date"
-import DeleteDiscussion from "./delete-discussion"
 
 export default function DiscussionItem({ discussion, onDelete }: { discussion: any, onDelete: () => void }) {
     return (
@@ -37,8 +36,6 @@ export default function DiscussionItem({ discussion, onDelete }: { discussion: a
                 <div className="text-sm">{formatDate(discussion.created_at)}</div>
                 <div className="text-sm" >{formatTime(discussion.created_at)}</div>
             </div>
-
-            <DeleteDiscussion discussion={discussion} onDelete={onDelete} />
         </Card>
     )
 }
