@@ -20,7 +20,7 @@ export default function DeleteDiscussion({ discussion }) {
     }
 
     return <div>
-            <Button variant="destructive" onClick={handleDelete}>
+            <Button variant="outline" onClick={handleDelete}>
                 Delete
             </Button>
         </div>

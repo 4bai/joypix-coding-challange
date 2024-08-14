@@ -5,7 +5,13 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+} from '~/components/ui/alert'
 import useUser from "@/components/user/hooks/useUser";
+import { AlertCircle } from "lucide-react";
 
 export default function UserLogin() {
     const router = useRouter();
@@ -38,7 +44,14 @@ export default function UserLogin() {
             <Input type="email" name="email" placeholder="Email" required autoComplete="email" />
             <Input type="password" name="password" placeholder="Password" required autoComplete="current-password" />
             <Button type="submit" className="self-end">Login</Button>
-            {errorMessage && <p>{errorMessage}</p>}
+            {errorMessage && <Alert variant="destructive">
+                <AlertCircle className="size-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                    {errorMessage}
+                </AlertDescription>
+            </Alert>
+            }
         </form>
     </div>;
 }
