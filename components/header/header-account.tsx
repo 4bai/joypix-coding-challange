@@ -3,6 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import type { User } from '../user/types'
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/utils/supabase/client'
 import useUser from '@/components/user/hooks/useUser'
@@ -12,7 +13,7 @@ import RegisterDialog from '~/components/user/user-register-dialog'
 const supabase = createClient()
 
 export default function HeaderAccount() {
-  const [user, setUser] = useUser()
+  const [user, setUser] = useUser() as [User, any]
   const router = useRouter()
 
   function handleLogout() {

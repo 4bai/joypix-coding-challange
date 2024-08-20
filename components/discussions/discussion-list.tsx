@@ -36,14 +36,18 @@ export function DiscussionList() {
         .order('created_at', { ascending: false })
 
       if (error) {
+        console.error(error)
         setStatus('error')
       }
       else {
-        setDiscussions(loadedDiscussions)
-        if (loadedDiscussions.length === 0)
+        if (!loadedDiscussions) {
           setStatus('empty')
-        else
+          setDiscussions([])
+        }
+        else {
           setStatus('success')
+          setDiscussions(loadedDiscussions)
+        }
       }
     }
 

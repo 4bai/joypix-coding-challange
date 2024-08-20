@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
+import type { User } from './types'
 import { createClient } from '@/utils/supabase/client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -11,12 +12,12 @@ import useUser from '@/components/user/hooks/useUser'
 export default function UserRegisterForm() {
   const router = useRouter()
   // eslint-disable-next-line unused-imports/no-unused-vars
-  const [user, setUser] = useUser()
+  const [user, setUser] = useUser() as [User, any]
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const formData = new FormData(e.target)
+    const formData = new FormData(e.target as HTMLFormElement)
     const supabase = createClient()
 
     // type-casting here for convenience
@@ -40,7 +41,9 @@ export default function UserRegisterForm() {
       router.push('/error')
     }
 
-    setUser?.(data.user)
+    if (data.user)
+      setUser?.(data.user)
+
     router.push('/')
   }
 

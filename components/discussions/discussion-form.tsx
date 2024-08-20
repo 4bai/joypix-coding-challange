@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import type { User } from '../user/types'
 import { createClient } from '@/utils/supabase/client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -11,7 +12,7 @@ import type { Discussion } from '@/components/discussions/types'
 export default function DiscussionForm() {
   const supabase = createClient()
   const router = useRouter()
-  const [user] = useUser()
+  const [user] = useUser() as [User | null, any]
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

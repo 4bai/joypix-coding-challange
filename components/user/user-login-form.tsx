@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AlertCircle } from 'lucide-react'
+import type { User } from './types'
 import { createClient } from '@/utils/supabase/client'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -16,13 +17,13 @@ import useUser from '@/components/user/hooks/useUser'
 export default function UserLogin() {
   const router = useRouter()
   // eslint-disable-next-line unused-imports/no-unused-vars
-  const [user, setUser] = useUser()
+  const [user, setUser] = useUser() as [User, any]
   const supabase = createClient()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData(e.target)
+    const formData = new FormData(e.target as HTMLFormElement)
     const loginData = {
       email: formData.get('email') as string,
       password: formData.get('password') as string,

@@ -5,9 +5,9 @@ import { createClient } from '@/utils/supabase/client'
 import type { User } from '@/components/user/types'
 
 export const UserContext = createContext({
-  user: null,
+  user: null as User | null,
   // eslint-disable-next-line unused-imports/no-unused-vars
-  setUser: (user: User | any | null) => {},
+  setUser: (user: User) => {},
 })
 
 export function UserProvider({ children }: { children: React.ReactNode }) {

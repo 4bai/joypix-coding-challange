@@ -14,10 +14,11 @@ import {
   AvatarImage,
 } from '~/components/ui/avatar'
 import { formatDate, formatTime } from '@/utils/date'
+import type { User } from '@/components/user/types'
 
 export default function DiscussionDetail({ discussionId }: { discussionId: string }) {
   const supabase = createClient()
-  const [user] = useUser()
+  const [user] = useUser() as [User, any]
   const [discussion, setDiscussion] = useState<Discussion>() || null
   const [status, setStatus] = useState('loading')
 

@@ -5,5 +5,5 @@ export interface Discussion {
   created_at: string
   title: string
   content: string
-  user: User
+  user: any
 }
